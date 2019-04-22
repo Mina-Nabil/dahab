@@ -40,7 +40,7 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <section id="wrapper" style="direction: ltr;">
-        <div class="login-register" style="background-image:url( {{ asset('images/login-register.jpg') }} );">
+        <div class="login-register" style="background-image:url( {{ asset('images/login.jpeg') }} );">
             <div class="login-box card">
                 <div class="card-body">
                     <form class="form-horizontal form-material" id="loginform" action="{{ route('login') }}" method="post">

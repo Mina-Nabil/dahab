@@ -26,10 +26,10 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('username')->unique();
-            $table->string('fullname');
+            $table->string('fullname')->nullable();
             $table->string('image')->nullable();
             $table->string('password');
-            $table->string('mobNumber');
+            $table->string('mobNumber')->nullable();
             $table->unsignedInteger('typeID');
             $table->foreign('typeID')->references('id')
                     ->on('user_types');
