@@ -148,7 +148,6 @@ function confirm(id){
                        <thead>
                         <tr>
                           <th>رقم الاسطمبه</th>
-                          <th>عدد</th>
                           <th>اصفر</th>
                           <th>ابيض</th>
                           <th>احمر</th>
@@ -159,7 +158,6 @@ function confirm(id){
                           @foreach($stamps as $stamp)
                           <tr>
                             <td>{{$stamp->STMP_SRNO}}</td>
-                            <td>{{$stamp->STMP_CONT}}</td>
                             <td>{{$stamp->STMP_YELW}}</td>
                             <td>{{$stamp->STMP_WHTE}}</td>
                             <td>{{$stamp->STMP_RED}}</td>

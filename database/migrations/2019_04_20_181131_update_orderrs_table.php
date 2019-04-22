@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateModelsTable extends Migration
+class UpdateOrderrsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class UpdateModelsTable extends Migration
     public function up()
     {
         //
-        Schema::table('models', function(Blueprint $table){
-          $table->string('MODL_SRNO')->unique()->change();
+        Schema::table('order_items', function(Blueprint $table){
+          $table->foreign('ORIT_ORDR_ID')->references('id')->on('orders');
         });
     }
 
@@ -27,5 +27,9 @@ class UpdateModelsTable extends Migration
     public function down()
     {
         //
+        Schema::table('order_items', function(Blueprint $table ){
+          $table->dropForeign('ORIT_ORDR_ID_foreign');
+
+        });
     }
 }
