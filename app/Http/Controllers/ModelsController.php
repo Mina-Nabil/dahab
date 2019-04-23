@@ -117,7 +117,10 @@ class ModelsController extends Controller
           'STMP_ID' => $stamp,
           'red'     => ($RequestArray->input('red')[$key]) ? ($RequestArray->input('red')[$key]) : 0,
           'yellow'  => ($RequestArray->input('yellow')[$key]) ? ($RequestArray->input('yellow')[$key]) : 0,
-          'white'   => ($RequestArray->input('white')[$key]) ? ($RequestArray->input('white')[$key]): 0
+          'white'   => ($RequestArray->input('white')[$key]) ? ($RequestArray->input('white')[$key]): 0,
+          'rdmm'  => ($RequestArray->input('rdmm')[$key]) ? ($RequestArray->input('rdmm')[$key]) : 0,
+          'ylmm'  => ($RequestArray->input('ylmm')[$key]) ? ($RequestArray->input('ylmm')[$key]) : 0,
+          'whmm'  => ($RequestArray->input('whmm')[$key]) ? ($RequestArray->input('whmm')[$key]) : 0
         ];
       }
       return $Stamps;

@@ -27,11 +27,14 @@ class Orders extends Model
 
     public static function getOrderStamps($OrderID){
       return DB::table('order_items')
-                    ->select(DB::raw('sum(order_items.ORIT_CONT) as STMP_CONT, sum(MDST_RED * ORIT_CONT) as STMP_RED, sum(MDST_YELW * ORIT_CONT) as STMP_YELW, sum(MDST_WHTE * ORIT_CONT) as STMP_WHTE,  STMP_SRNO'))
+                    ->select(DB::raw('sum(order_items.ORIT_CONT) as STMP_CONT, sum(MDST_RED * ORIT_CONT) as STMP_RED, sum(MDST_YELW * ORIT_CONT) as STMP_YELW, sum(MDST_WHTE * ORIT_CONT) as STMP_WHTE, MDST_RDMM , MDST_YLMM, MDST_WHMM,  STMP_SRNO'))
                     ->leftJoin('modl_stmp', 'ORIT_MODL_ID', '=', 'modl_stmp.MDST_MODL_ID')
                     ->leftJoin('stamps', 'stamps.id', '=', 'modl_stmp.MDST_STMP_ID')
                     ->where('order_items.ORIT_ORDR_ID', $OrderID)
-                    ->groupBy('modl_stmp.MDST_STMP_ID')
+                    ->groupBy('MDST_STMP_ID')
+                    ->groupBy('MDST_RDMM')
+                    ->groupBy('MDST_YLMM')
+                    ->groupBy('MDST_WHMM')
                     ->get();
     }
 

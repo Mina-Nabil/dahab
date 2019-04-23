@@ -71,9 +71,12 @@ function confirm(id){
 
                   <input type=hidden  id="dt-header" value="
                         <th>اسم المستخدم</td>
-                        <th > {{ $order->ORDR_CLNT}}</th><th></th>
+                        <th></th>
+                        <th > {{ $order->ORDR_CLNT}}</th>
+                        <th></th>
                         <th>تاريخ الطلب</th>
                         <th >{{ $order->ORDR_DATE }}</th>
+                        <th></th>
                    ">
 
                   <input type=hidden  id="dt-stamp-header" value="
@@ -86,7 +89,7 @@ function confirm(id){
                     @else
                     id="myTable"
                     @endif
-                     class="table color-bordered-table table-striped full-color-table full-dark-table hover-table" data-display-length='-1' data-order="[]" >
+                     class="table color-bordered-table table-striped  hover-table" data-display-length='-1' data-order="[]" >
 
 
                         <thead>
@@ -95,23 +98,22 @@ function confirm(id){
                               <th >رقم الموديل</th>
                               <th></th>
                               <th></th>
+                              <th></th>
                               <th >عدد</th>
+                              <th></th>
                               <th></th>
                             </tr>
                         </thead>
                         <tbody>
                           @foreach($items as $key => $item)
-                          @if(isset($items[$key+1]))
                           <tr>
-                          @else
-                          <tr  >
-                          @endif
                             <td >{{$item->MODL_SRNO}}</td>
-                            <td>
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td >{{$item->ORIT_CONT}}</td>
-
-                            <td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           @endforeach
                         </tbody>
@@ -142,15 +144,18 @@ function confirm(id){
                    @else
                    id="myTable2"
                    @endif
-                    class="table color-bordered-table table-striped full-color-table full-dark-table hover-table" data-display-length='-1' data-order="[]" >
+                    class="table color-bordered-table table-striped  hover-table" data-display-length='-1' data-order="[]" >
 
 
                        <thead>
                         <tr>
                           <th>رقم الاسطمبه</th>
                           <th>اصفر</th>
+                          <th>مللي</th>
                           <th>ابيض</th>
+                          <th>مللي</th>
                           <th>احمر</th>
+                          <th>مللي</th>
                         </tr>
                       </thead>
 
@@ -159,8 +164,11 @@ function confirm(id){
                           <tr>
                             <td>{{$stamp->STMP_SRNO}}</td>
                             <td>{{$stamp->STMP_YELW}}</td>
+                            <td>{{$stamp->MDST_YLMM}}</td>
                             <td>{{$stamp->STMP_WHTE}}</td>
+                            <td>{{$stamp->MDST_WHMM}}</td>
                             <td>{{$stamp->STMP_RED}}</td>
+                            <td>{{$stamp->MDST_RDMM}}</td>
                           </tr>
                           @endforeach
 

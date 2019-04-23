@@ -59,7 +59,7 @@
                       @foreach($ModelStamps as $key => $modlstmp)
 
                       <div class="form-group row col-lg-12 removeclass{{$key+1}}">
-                      <div class="col-sm-3 nopadding">
+                      <div class="col-sm-2 nopadding">
                         <div class="form-group">
 
                           <select class="select2 form-control  custom-select" style="height:50px;"  name="stamp[]">
@@ -74,31 +74,51 @@
 
                         </div>
                       </div>
-                        <div class="col-sm-3 nopadding">
+                        <div class="col-sm-2 nopadding">
                             <div class="form-group">
                                 <input type="number" step="0.01" class="form-control" id="red" name="red[]" value="{{$modlstmp->MDST_RED}}" placeholder="اللون الاحمر">
                             </div>
                         </div>
-                        <div class="col-sm-3 nopadding">
+                        <div class="col-sm-1 nopadding">
+                            <div class="form-group">
+                                <input type="number" step="0.01" class="form-control" id="red" name="rdmm[]" value="{{$modlstmp->MDST_RDMM}}" placeholder="اللون الاحمر">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 nopadding">
                             <div class="form-group">
                                 <input type="number" step="0.01" class="form-control" id="yellow" name="yellow[]" value="{{$modlstmp->MDST_YELW}}" placeholder="اللون الاصفر">
                             </div>
                         </div>
-                        <div class="col-sm-3 nopadding">
+
+                        <div class="col-sm-1 nopadding">
+                            <div class="form-group">
+                                <input type="number" step="0.01" class="form-control" id="yellow" name="ylmm[]" value="{{$modlstmp->MDST_YLMM}}" placeholder="اللون الاصفر">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 nopadding">
                           <div class="form-group">
-                          <div class="input-group">
                                 <input type="number" step="0.01" class="form-control" id="white" name="white[]" value="{{$modlstmp->MDST_WHTE}}" placeholder="اللون الابيض">
-                            <div class="input-group-append">
-                              @if(isset($ModelStamps[$key+1]))
-                              <button class="btn btn-danger" type="button" onclick="remove_education_fields({{$key+1}});"> <i class="fa fa-minus"></i> </button>
-                              @else
-                              <button class="btn btn-success" id="dynamicAddButton" type="button" onclick="education_fields();"><i class="fa fa-plus"></i></button>
-                              @endif
+                              </div>
+                            </div>
+
+                            <div class="col-sm-2 nopadding">
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <input type="number" step="0.01" class="form-control" id="white" name="whmm[]" value="{{$modlstmp->MDST_WHMM}}" placeholder="اللون الابيض">
+
+                                  <div class="input-group-append">
+                                    @if(isset($ModelStamps[$key+1]))
+                                    <button class="btn btn-danger" type="button" onclick="remove_education_fields({{$key+1}});"> <i class="fa fa-minus"></i> </button>
+                                    @else
+                                    <button class="btn btn-success" id="dynamicAddButton" type="button" onclick="education_fields();"><i class="fa fa-plus"></i></button>
+                                    @endif
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                          </div>
-                        </div>
-                      </div>
 
                     @endforeach
                     </div>
@@ -107,7 +127,7 @@
                     <div class="row">
                       <label class="col-sm-12 nopadding" for="input-file-now-custom-1">اسطمبات الموديل</label>
                       <div class="col-lg-12" id="dynamicContainer"></div>
-                      <div class="col-lg-3 ">
+                      <div class="col-lg-2 ">
                         <div class="form-group">
 
                           <select class="select2 form-control  custom-select" style="height:50px;" id="stamp" name="stamp[]">
@@ -118,20 +138,41 @@
 
                         </div>
                       </div>
-                        <div class="col-sm-3 nopadding">
+                        <div class="col-sm-2 nopadding">
                             <div class="form-group">
                                 <input type="number" step="0.01" class="form-control" id="red" name="red[]" placeholder="اللون الاحمر">
                             </div>
                         </div>
-                        <div class="col-sm-3 nopadding">
+
+                        <div class="col-sm-1 nopadding">
+                            <div class="form-group">
+                                <input type="number" step="0.01" class="form-control" id="red" name="rdmm[]" placeholder="مللي">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 nopadding">
                             <div class="form-group">
                                 <input type="number" step="0.01" class="form-control" id="yellow" name="yellow[]" placeholder="اللون الاصفر">
                             </div>
                         </div>
-                        <div class="col-sm-3 nopadding">
+
+                        <div class="col-sm-1 nopadding">
+                            <div class="form-group">
+                                <input type="number" step="0.01" class="form-control" id="yellow" name="ylmm[]" placeholder="مللي">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 nopadding">
+                            <div class="form-group">
+                              <input type="number" step="0.01" class="form-control" id="white" name="white[]"  placeholder="اللون الابيض">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 nopadding">
                           <div class="form-group">
                           <div class="input-group">
-                                <input type="number" step="0.01" class="form-control" id="white" name="white[]"  placeholder="اللون الابيض">
+                            <input type="number" step="0.01" class="form-control" id="yellow" name="whmm[]" placeholder="مللي">
+
                             <div class="input-group-append">
                               <button class="btn btn-success" id="dynamicAddButton" type="button" onclick="education_fields();"><i class="fa fa-plus"></i></button>
                             </div>

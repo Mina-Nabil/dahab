@@ -13,6 +13,7 @@
     <title>{{  config('APP_NAME', 'Mosaad & Ashraf') }}</title>
     <!-- Custom CSS -->
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
+    <link href="{{asset('dist/css/style.min.css')}}" media=print rel="stylesheet">
     <!-- Datatable CSS -->
     <link href="{{ asset('assets/node_modules/datatables/media/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
     <!-- Form CSS -->
@@ -250,13 +251,13 @@
     <!-- This is data table -->
     <script src="{{ asset('assets/node_modules/datatables/datatables.min.js') }}"></script>
     <!-- start - This is for export functionality only -->
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
     <!-- End export script -->
     <!-- Form JS -->
     <script src="{{ asset('dist/js/pages/jasny-bootstrap.js') }}"></script>
@@ -283,12 +284,14 @@
         divtest.setAttribute("class", "form-group removeclass" + room);
         var rdiv = 'removeclass' + room;
         var concatString = "";
-        concatString += '<div class="row">  <div class="col-sm-3 nopadding"><div id="selectHolder" class="form-group">\
+        concatString += '<div class="row">  <div class="col-sm-2 nopadding"><div id="selectHolder" class="form-group">\
          <select class="select2 form-control  custom-select" style="height:50px;" id="stamp' + room +'" name="stamp[]">';
         @foreach($Stamps as $stamp)
         concatString += ' <option value="{{ $stamp->id }}">{{$stamp->STMP_SRNO}}</option> ';
         @endforeach
-        concatString +=' </select> </div> </div> <div class="col-sm-3 nopadding"> <div class="form-group">  <input type="number" step="0.01" class="form-control" id="red" name="red[]" value="" placeholder="اللون الاحمر"> </div> </div> <div class="col-sm-3 nopadding"> <div class="form-group"> <input type="number" class="form-control" id="yellow" step="0.01" name="yellow[]" value="" placeholder="اللون الاصفر">  </div></div> <div class="col-sm-3 nopadding">  <div class="form-group">   <div class="input-group">                        <input type="number" step="0.01" class="form-control" id="white" name="white[]" value="" placeholder="اللون الابيض"><div class="input-group-append"> <button class="btn btn-danger" type="button" onclick="remove_education_fields(' + room + ');"> <i class="fa fa-minus"></i> </button></div></div></div></div><div class="clear"></div></row>';
+        concatString +=' </select> </div> </div> <div class="col-sm-2 nopadding"> <div class="form-group">  <input type="number" step="0.01" class="form-control" id="red" name="red[]" value="" placeholder="اللون الاحمر"> </div> </div> <div class="col-sm-1 nopadding"> <div class="form-group">  <input type="number" step="0.01" class="form-control" id="red" name="rdmm[]" value="" placeholder="مللي "> </div> </div>'
+        concatString += ' <div class="col-sm-2 nopadding"> <div class="form-group"> <input type="number" class="form-control" id="yellow" step="0.01" name="yellow[]" value="" placeholder="اللون الاصفر">  </div></div>  <div class="col-sm-1 nopadding"> <div class="form-group">  <input type="number" step="0.01" class="form-control" id="yellow" name="ylmm[]" value="" placeholder="مللي "> </div> </div>  <div class="col-sm-2 nopadding"> <div class="form-group">  <input type="number" step="0.01" class="form-control" id="white" name="white[]" value="" placeholder="اللون الابيض">  </div> </div> ';
+        concatString += '<div class="col-sm-2 nopadding">  <div class="form-group">   <div class="input-group">  <input type="number" step="0.01" class="form-control" id="white" name="whmm[]" value="" placeholder="مللي ">  <div class="input-group-append"> <button class="btn btn-danger" type="button" onclick="remove_education_fields(' + room + ');"> <i class="fa fa-minus"></i> </button></div></div></div></div><div class="clear"></div></row>';
 
         divtest.innerHTML = concatString;
 
@@ -444,11 +447,36 @@
               extend: 'print',
               text: 'اطبع الطلب',
               title: 'مسعد و اشرف',
-              footer:true,
               customize: function ( win ) {
-                $(win.document.body).find( 'thead' ).prepend('<tr>' + $('#dt-header').val() + '</tr>')
-            
-                $('#stampHeader' ).addClass( 'stampHeader' );
+
+                $(win.document.body)
+                .prepend('<center><img src="{{asset('images/dahab-logo.png')}}" style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;" /></center>')
+                .css( 'font-size', '24px' )
+
+                .find( 'thead' ).prepend('<tr>' + $('#dt-header').val() + '</tr>')
+
+                //$('#stampHeader' ).addClass( 'stampHeader' );
+                $(win.document.body).find( 'table' )
+                       .css( 'border', 'solid')
+                       .css( 'margin-top', '20px')
+                       .css( 'font-size', 'inherit' );
+
+
+               $(win.document.body).find('th')
+               .css('border','solid')
+               .css('border','!important')
+               .css('border-width','1px')
+               .css('font-size','inherit')
+
+               $(win.document.body).find('td')
+               .css('border','solid')
+               .css('border','!important')
+               .css('border-width','1px');
+
+               $(win.document.body).find('tr')
+               .css('border','solid')
+               .css('border','!important')
+               .css('border-width','1px')
 
 
                 }
@@ -464,11 +492,34 @@
               extend: 'print',
               text: 'اطبع الطلب',
               title: 'مسعد و اشرف',
-              footer:true,
               customize: function ( win ) {
-                $(win.document.body).find( 'thead' ).prepend('<tr>' + $('#dt-header').val() + '</tr>')
 
-                $('#stampHeader' ).addClass( 'stampHeader' );
+                $(win.document.body)
+                  .prepend('<img src="{{asset('images/dahab-logo.png')}}" style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0; opacity:0.4; " />')
+                .css( 'font-size', '24px' )
+                .find( 'thead' ).prepend('<tr>' + $('#dt-header').val() + '</tr>')
+
+                //$('#stampHeader' ).addClass( 'stampHeader' );
+
+                $(win.document.body).find( 'table' )
+                       .css( 'margin-top', '20px')
+                       .css( 'border', 'solid')
+                       .css( 'font-size', 'inherit' );
+
+               $(win.document.body).find('th')
+               .css('border','solid')
+               .css('border','!important')
+               .css('border-width','1px')
+
+               $(win.document.body).find('td')
+               .css('border','solid')
+               .css('border','!important')
+               .css('border-width','1px');
+
+               $(win.document.body).find('tr')
+               .css('border','solid')
+               .css('border','!important')
+               .css('border-width','1px')
 
 
           }

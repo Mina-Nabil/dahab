@@ -60,7 +60,10 @@ class Models extends Model
             'MDST_STMP_ID' => $value['STMP_ID'],
             'MDST_RED'     => $value['red'],
             'MDST_YELW'    => $value['yellow'],
-            'MDST_WHTE'    => $value['white']
+            'MDST_WHTE'    => $value['white'],
+            'MDST_YLMM'    => $value['ylmm'],
+            'MDST_RDMM'    => $value['rdmm'],
+            'MDST_WHMM'    => $value['whmm']
           ]);
         }
         return $id;
@@ -85,7 +88,10 @@ class Models extends Model
           'MDST_STMP_ID' => $value['STMP_ID'],
           'MDST_RED'     => $value['red'],
           'MDST_YELW'    => $value['yellow'],
-          'MDST_WHTE'    => $value['white']
+          'MDST_WHTE'    => $value['white'],
+          'MDST_YLMM'    => $value['ylmm'],
+          'MDST_RDMM'    => $value['rdmm'],
+          'MDST_WHMM'    => $value['whmm']
         ]);
       }
 
